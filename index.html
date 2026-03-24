@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Manhattan Street Types</title>
+    <link rel="icon" type="image/gif" href="favicon.ico">
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <style>
+        .with-image-bg,
+        .with-video-bg {
+            position: relative;
+            background-size: cover;
+            margin-bottom: 2em;
+
+            /* Center everything inside */
+            min-height: 100svh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            align-items: end;
+        }
+
+        .with-image-bg {
+            background-image: url(#);
+        }
+
+        .video-background {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .video-background video {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            font-size: 20px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            text-rendering: optimizeLegibility;
+        }
+
+        .content {
+            max-width: 640px;
+            margin: auto;
+        }
+
+        .header {
+            padding: 0 0;
+        }
+
+        a {
+            color: #f05349;
+        }
+
+        .footer {
+            background: #232323;
+            color: #ffffff;
+            text-align: center;
+            font-size: 0.8em;
+            padding: 4em 0;
+            position: relative;
+            background-size: cover;
+
+            /* Center everything inside */
+            min-height: 20svh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            align-items: end;
+            background-image: url(#);
+
+        }
+
+        figure {
+            margin: 0;
+            padding-bottom: 1.2em;
+        }
+
+        figcaption {
+            font-size: 0.8em;
+            text-align: center;
+            margin-top: 0.5em;
+            color: #666;
+        }
+
+        h1 {
+            font-family: 'Lora', Georgia, serif;
+            font-weight: bold;
+            font-size: 3em;
+            line-height: 1.1;
+        }
+
+        .subhead {
+            font-family: 'Lora', Georgia, serif;
+        }
+
+        iframe,
+        img,
+        video {
+            max-width: 100%;
+        }
+
+        p {
+            line-height: 1.6;
+            margin: 0;
+            padding-bottom: 1.2em;
+        }
+
+        ul {
+            margin: 0;
+            padding-bottom: 1em;
+            line-height: 1.6;
+        }
+
+        iframe {
+            padding-bottom: 1.2em;
+        }
+
+        code {
+            font-family: 'Courier New', monospace;
+            background: #fff880;
+        }
+
+        .full-width figure {
+            text-align: center;
+            width: 80%;
+            margin: auto;
+        }
+
+        .headtext {
+            color: #000000;
+            background: white;
+            padding: 10px;
+        }
+
+        /* margin on mobile */
+        @media (max-width: 640px) {
+            body {
+                font-size: 18px;
+            }
+
+            .content {
+                padding-left: 0.5em;
+                padding-right: 0.5em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="content">
+            <div class="">
+                <h1 style="color:#000000; background:#ffffff; padding: 10px;">Manhattan Street Types</h1>
+                <p class="subhead" style="color:#000000; background:#ffffff; padding: 10px;">The borough's numbered grid system is widely known for how easy it makes travelling on the island. But how unique is it as compared to the other boroughs?
+                    <br>
+                    <br>
+                    By <a href="https://hgorledeenn.github.io" target="_blank">Holden Green</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
+    <div class="content">
+        <i>
+            <p>The below graphics show up to the top 5 named categories that Americans are engaged in at any given time.
+            </p>
+            <p><b>Each square in one of the panels represents about 3.3 million Americans.</b> All together, we see 8
+                snapshots of the most common activities Americans are engaged in on a standard day in the US.</p>
+        </i>
+        <p>From midnight through a full day of work or leisure, this is what the data tells us.
+        </p>
+    </div>
+
+    <br><br>
+
+    <div class="midnight">
+        <br>
+        <div class="full-width">
+            <figure>
+                <h1><strong>12:00 AM</strong></h1>
+                <img alt="waffle plots of the most common activities being done by the population at various times of the day with midnight highlighted"
+                    src="plots_for_site/2_12am.png">
+            </figure>
+        </div>
+        <br>
+        <div class="content">
+            <p>It's midnight. The start of this individual, statistically average, American day.
+            </p>
+            <p>It's quiet at midnight. More than 65% of the population (about 215 million people) are sleeping.</p>
+            <p>The next largest share of the population, about 20 million people, are washing or dressing themselves.
+                Another 13 million are engaged in some form of leisure activity, and about 10 million are eating or
+                drinking.</p>
+            <p>Only 3 million people – about 1% of the population, or the equivalent of one of the squares in the
+                midnight box
+                – is working right now.</p>
+            <p>The number of people sleeping will rise as the night goes on, peaking at over 300 million people around
+                4am. The night is just getting started.</p>
+            <br><br>
+        </div>
+    </div>
+
+
+
+    <div class="five_am">
+        <br>
+        <div class="full-width">
+            <figure>
+                <h1><strong>05:00 AM</strong></h1>
+                <img alt="waffle plots of the most common activities being done by the population at various times of the day with 5am highlighted"
+                    src="plots_for_site/3_5am.png">
+            </figure>
+        </div>
+        <br>
+        <div class="content">
+            <p>At 5:00 am, as the first light of the day might be cresting the horizon, most of the country remains
+                asleep. More than 275 million people are sleeping, by far the largest share of the population at this
+                time.
+            </p>
+            <p>The share of people working has more than tripled in size since midnight, and now over 10 million people
+                are engaged in some work-related activity.</p>
+            <p>Even more than working, though, 4% of the population is washing or dressing themselves, many likely
+                getting ready for the day ahead of them.</p>
+            <br><br>
+        </div>
+    </div>
+
+
+
+    <div class="seven_am">
+        <br>
+        <div class="full-width">
+            <figure>
+                <h1><strong>07:00 AM</strong></h1>
+                <img alt="waffle plots of the most common activities being done by the population at various times of the day with 7am highlighted"
+                    src="plots_for_site/4_7am.png">
+            </figure>
+        </div>
+        <br>
+        <div class="content">
+            <p>The share of the population that is asleep has nearly been halved in the two hours since 5am – down to
+                about 145 million Americans – while the share of people engaged in work-related activities (including
+                work-related travel/commuting) has quadrupled to about 40 million Americans.</p>
+            <p>About 30 million people are eating and/or drinking, and about 25 million more are washing or dressing
+                themselves.</p>
+            <p>Slowly, Americans are waking up.</p>
+            <br><br>
+        </div>
+    </div>
+
+
+
+    <div class="nine_thirty_am">
+        <br>
+        <div class="full-width">
+            <figure>
+                <h1><strong>09:30 AM</strong></h1>
+                <img alt="waffle plots of the most common activities being done by the population at various times of the day with 9:30am highlighted"
+                    src="plots_for_site/5_930am.png">
+            </figure>
+        </div>
+        <br>
+        <div class="content">
+            <p>The day is in full swing by 9:30am. About 100 million Americans are working, the largest share of any of
+                the snapshots from this day.</p>
+            <p>Sleeping still remains the 2nd most common activity, though only about 13% of the population is sleeping
+                in by now.</p>
+            <p>About 6% of the population is engaged in leisure activities, and interior cleaning makes its first
+                appearance among the most common activities at 4% of the population, or about 13 million people.</p>
+            <br><br>
+        </div>
+    </div>
+
+
+
+    <div class="noon">
+        <br>
+        <div class="full-width">
+            <figure>
+                <h1><strong>12:00 PM</strong></h1>
+                <img alt="waffle plots of the most common activities being done by the population at various times of the day with noon highlighted"
+                    src="plots_for_site/6_12pm.png">
+            </figure>
+        </div>
+        <br>
+        <div class="content">
+            <p>It's midday on this model American day. If the skies are clear, the sun is shining brightly overhead. 75
+                million Americans are still working. But, for more than 52 million others, it's lunchtime.</p>
+            <p>For the first time in any of the snapshots from the day, eating and drinking is the second most common
+                activity Americans are engaged in.</p>
+            <p>A few particularly late sleepers – about 13 million – are still in bed at noon. A roughly equal share is
+                engaged in interior cleaning.</p>
+            <br><br>
+
+        </div>
+    </div>
+
+
+
+    <div class="five_pm">
+        <br>
+        <div class="full-width">
+            <figure>
+                <h1><strong>05:00 PM</strong></h1>
+                <img alt="waffle plots of the most common activities being done by the population at various times of the day with 5pm highlighted"
+                    src="plots_for_site/7_5pm.png">
+            </figure>
+        </div>
+        <br>
+        <div class="content">
+            <p>It's now 5pm. Roughly 70 million Americans are engaging in some sort of leisure. From now through
+                11:30pm, the most common single activity in the US is watching non-religious tv shows or movies.</p>
+            <p>Happy hour deals or early dinner plans have more than 50 million people eating or drinking. And about 42
+                million Americans remain doing some work-related activity.</p>
+            <br><br>
+
+        </div>
+    </div>
+
+
+
+    <div class="seven_thirty_pm">
+        <br>
+        <div class="full-width">
+            <figure>
+                <h1><strong>07:30 PM</strong></h1>
+                <img alt="waffle plots of the most common activities being done by the population at various times of the day with 7:30pm highlighted"
+                    src="plots_for_site/8_730pm.png">
+            </figure>
+        </div>
+        <br>
+        <div class="content">
+            <p>This sample American day is quickly drawing to a close. For much of America, the setting sun and the
+                clock showing 7:30pm means it's time to relax.</p>
+            <p>About 125 million people are engaged in leisure activities. For many, this means watching a tv show or
+                movie (the most common activity between 5pm and 11:30pm is watching content on a tv).</p>
+            <p>For about 33 million other Americans, the end of the evening is accompanied by dinner.</p>
+            <p>While many relax, though, about 16 million people remain working.</p>
+            <br><br>
+
+        </div>
+    </div>
+
+
+
+    <div class="ten_pm">
+        <br>
+        <div class="full-width">
+            <figure>
+                <h1><strong>10:00 PM</strong></h1>
+                <img alt="waffle plots of the most common activities being done by the population at various times of the day with 10pm highlighted"
+                    src="plots_for_site/9_10pm.png">
+            </figure>
+        </div>
+        <br>
+        <div class="content">
+            <p>The sky is near its darkest point now, and half the country is relaxing. By far, the majority of people –
+                118 million – are watching tv or movies.</p>
+            <p>About 13 million each are playing games, socializing, or reading.</p>
+            <p>Another common pre-bed activity: washing and changing into pajamas.</p>
+            <br><br>
+        </div>
+    </div>
+
+
+
+    <div class="midnight">
+        <br>
+        <div class="full-width">
+            <figure>
+                <h1><strong>12:00 AM</strong></h1>
+                <img alt="waffle plots of the most common activities being done by the population at various times of the day with midnight highlighted"
+                    src="plots_for_site/2_12am.png">
+            </figure>
+        </div>
+        <br>
+        <div class="content">
+            <p>It's midnight again; the end of this average day in the US. The sky is black and over 200 million
+                Americans are asleep.</p>
+            <p>Some are getting ready for bed, and even fewer are still engaged in some leisure or eating/drinking.</p>
+            <p>The next day will be a little different – some changes in routines will be necessitated by the weather or weekends. But, as the weeks pass and the seasons change, much more will stay the same, and the cycle will continue.</p>
+            <br><br>
+
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="content">
+            <h4 style="color:#000000; background:#ffffff; padding: 10px;">See my documentation <a
+                    href="https://github.com/hgorledeenn/one-american-day/"
+                    target="_blank"">here</a>  |  Return to my <a href=" https://hgorledeenn.github.io"
+                    target="_blank">homepage</a></h4>
+        </div>
+    </div>
+</body>
+
+</html>
