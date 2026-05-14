@@ -161,6 +161,125 @@
             padding: 10px;
         }
 
+        /* Scrollytelling */
+        .scrolly-outer {
+            position: relative;
+        }
+
+        .scrolly-bg-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow: hidden;
+            margin-bottom: -100vh;
+            z-index: 0;
+        }
+
+        .parallax-track {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            will-change: transform;
+        }
+
+        .scrolly-img-wrapper {
+            position: absolute;
+            /*
+              Pre-rotation: W wide × 100vw tall.
+              After -90° CCW: appears 100vw wide × W tall.
+              W = max(160vw, 140vh) ensures the rotated image is always
+              taller than the viewport even on portrait/mobile screens.
+              object-fit:cover crops ~20% of white space from each rotated side.
+              Positioning: left = 50vw - W/2, top = W/2 - 50vw so that
+              the rotated top edge lands exactly at y=0 of the container.
+            */
+            width: max(160vw, 140vh);
+            height: 100vw;
+            left: calc(50vw - max(80vw, 70vh));
+            top: calc(max(80vw, 70vh) - 50vw);
+            transform-origin: center center;
+            transform: rotate(-90deg);
+        }
+
+        .scrolly-bg-img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .scrolly-overlay {
+            display: none;
+        }
+
+        .scrolly-steps {
+            position: relative;
+            z-index: 2;
+            padding-top: 10vh;
+        }
+
+        .scrolly-step {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0 5%;
+        }
+
+        .scrolly-step-last {
+            min-height: 100vh;
+            align-items: flex-end;
+            padding-bottom: 12vh;
+        }
+
+        .scrolly-step-box {
+            background: rgba(65, 65, 65, 0.88);
+            padding: 1.2em 1.4em;
+            max-width: 360px;
+        }
+
+        .scrolly-step-box p {
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #f0f0f0;
+        }
+
+        .map-key {
+            display: flex;
+            flex-direction: column;
+            gap: 0.55em;
+        }
+
+        .map-key-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6em;
+            font-family: arial, helvetica, sans-serif;
+            font-size: 0.75em;
+            color: #f0f0f0;
+        }
+
+        .map-key-swatch {
+            display: inline-block;
+            width: 2em;
+            height: 3px;
+            border-radius: 1px;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 640px) {
+            .scrolly-step {
+                justify-content: center;
+                padding: 0 4%;
+            }
+            .scrolly-step-box {
+                max-width: 100%;
+            }
+        }
+
         /* margin on mobile */
         @media (max-width: 640px) {
             body {
@@ -486,147 +605,95 @@
         <p>But, what does the system actually look like now? How did the commissioners' plan all those years ago affect
             the breakdown of road types today?</p>
     </div>
-    <div id="g-manhattan_map-box" class="ai2html">
-        <!-- Artboard: full -->
-        <div id="g-manhattan_map-full" class="g-artboard" style="width:700px; height:425px;" data-aspect-ratio="1.647"
-            data-min-width="700">
-            <div style=""></div>
-            <img id="g-manhattan_map-full-img" class="g-manhattan_map-full-img g-aiImg" alt=""
-                src="manhattan_map-full.png" />
-            <div id="g-ai0-1" class="g-ai2html-settings g-aiAbs" style="top:6.1176%;left:5.6803%;width:65%;">
-                <p class="g-pstyle0">The<span class="g-cstyle0"> </span>Ave/St Debate</p>
+    <div class="scrolly-outer" id="scrolly-section">
+        <div class="scrolly-bg-sticky">
+            <div class="parallax-track" id="parallax-track">
+                <div class="scrolly-img-wrapper">
+                    <img src="manhattan_sideways.png" class="scrolly-bg-img" alt="Map of Manhattan" />
+                </div>
             </div>
-            <div id="g-ai0-2" class="g-ai2html-settings g-aiAbs" style="top:18.5882%;left:6.2659%;width:47.1429%;">
-                <p>Manhattan, known for its (mostly) rigid grid of horizontal <span class="g-cstyle1">streets</span> and
-                    vertical <span class="g-cstyle1">avenues </span>, is criss-crossed by them &ndash; more than 400
-                    miles of the two road types.</p>
+            <div class="scrolly-overlay"></div>
+        </div>
+        <div class="scrolly-steps">
+            <div class="scrolly-step">
+                <div class="scrolly-step-box">
+                    <p>
+                        Road Types:
+                    </p>
+                    <br>
+                    <div class="map-key">
+                        <div class="map-key-item">
+                            <span class="map-key-swatch" style="background:#00bfc4;"></span>
+                            <span>Street</span>
+                        </div>
+                        <div class="map-key-item">
+                            <span class="map-key-swatch" style="background:#f8766d;"></span>
+                            <span>Avenue</span>
+                        </div>
+                        <div class="map-key-item">
+                            <span class="map-key-swatch" style="background:#7f7f7f;"></span>
+                            <span>Other</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div id="g-ai0-3" class="g-ai2html-settings g-aiAbs" style="top:50.1176%;left:12.6865%;width:7.2857%;">
-                <p class="g-pstyle1">Street</p>
+            <div class="scrolly-step">
+                <div class="scrolly-step-box">
+                    <p>Manhattan's road grid is dominated by streets and avenues; they make up over 75% of all roads in the borough. Streets alone stretch over 325 miles of Manhattan, striping it from Wall Street to its northern tip.</p>
+                </div>
             </div>
-            <div id="g-ai0-4" class="g-ai2html-settings g-aiAbs" style="top:53.4118%;left:12.6418%;width:7.2857%;">
-                <p class="g-pstyle1">Avenue</p>
+            <div class="scrolly-step">
+                <div class="scrolly-step-box">
+                    <p>Streets are also more common in Manhattan than any other borough and they make up over 60% of the island's entire road network.</p>
+                </div>
             </div>
-            <div id="g-ai0-5" class="g-ai2html-settings g-aiAbs" style="top:56.9412%;left:12.6418%;width:7.2857%;">
-                <p class="g-pstyle1">Other</p>
+            <div class="scrolly-step">
+                <div class="scrolly-step-box" style="padding: 0; overflow: hidden;">
+                    <div id="g-bar_chart-box" class="ai2html">
+                        <!-- Artboard: full -->
+                        <div id="g-bar_chart-full" class="g-artboard" style="width:700px; height:425px;" data-aspect-ratio="1.647" data-min-width="700">
+                            <div style=""></div>
+                            <img id="g-bar_chart-full-img" class="g-bar_chart-full-img g-aiImg" alt="" src="bar_chart-full.png" />
+                            <div id="g-ai0-1" class="g-ai2html-settings g-aiAbs" style="top:2.5882%;left:2.1429%;width:95.7143%;"><p class="g-pstyle0">Manhattan&rsquo;s Street Domination</p></div>
+                            <div id="g-ai0-2" class="g-ai2html-settings g-aiAbs" style="top:12%;left:1.8571%;width:96%;"><p>The borough has the highest share of streets in its road network at more than 60%. That&rsquo;s more than 320 total miles of streets.</p></div>
+                            <div id="g-ai0-3" class="g-ai2html-settings g-aiAbs" style="top:28.4706%;left:14.7003%;width:4.4286%;"><p class="g-pstyle1">Street</p></div>
+                            <div id="g-ai0-4" class="g-ai2html-settings g-aiAbs" style="top:28.4706%;left:23.4552%;width:4.1429%;"><p class="g-pstyle1">Other</p></div>
+                            <div id="g-ai0-5" class="g-ai2html-settings g-aiAbs" style="top:28.4706%;left:31.4214%;width:5.4286%;"><p class="g-pstyle1">Avenue</p></div>
+                            <div id="g-ai0-6" class="g-ai2html-settings g-aiAbs" style="top:33.6471%;right:89.6164%;width:6.1429%;"><p class="g-pstyle2">Staten Island</p></div>
+                            <div id="g-ai0-7" class="g-ai2html-settings g-aiAbs" style="top:46.3529%;right:89.6838%;width:7.8571%;"><p class="g-pstyle2">Queens</p></div>
+                            <div id="g-ai0-8" class="g-ai2html-settings g-aiAbs" style="top:59.2941%;right:89.692%;width:9.2857%;"><p class="g-pstyle2">Manhattan</p></div>
+                            <div id="g-ai0-9" class="g-ai2html-settings g-aiAbs" style="top:72%;right:89.692%;width:9.2857%;"><p class="g-pstyle2">Brooklyn</p></div>
+                            <div id="g-ai0-10" class="g-ai2html-settings g-aiAbs" style="top:84.9412%;right:89.692%;width:9.2857%;"><p class="g-pstyle2">Bronx</p></div>
+                        </div>
+                        <!-- Artboard: mobile -->
+                        <div id="g-bar_chart-mobile" class="g-artboard" style="max-width: 375px;max-height: 471px" data-aspect-ratio="0.797" data-min-width="0" data-max-width="699">
+                            <div style="padding: 0 0 125.5467% 0;"></div>
+                            <img id="g-bar_chart-mobile-img" class="g-bar_chart-mobile-img g-aiImg" alt="" src="bar_chart-mobile.png" />
+                            <div id="g-ai1-1" class="g-ai2html-settings g-aiAbs" style="top:1.2744%;left:2.4%;width:97.6%;"><p class="g-pstyle0">Manhattan&rsquo;s Street</p><p class="g-pstyle0">Domination</p></div>
+                            <div id="g-ai1-2" class="g-ai2html-settings g-aiAbs" style="top:21.4528%;left:2.7567%;width:97.3333%;"><p>The borough has the highest share of streets in its road network at more than 60%. That&rsquo;s more than 320 total miles of streets.</p></div>
+                            <div id="g-ai1-3" class="g-ai2html-settings g-aiAbs" style="top:37.3832%;left:25.7081%;width:6.4%;"><p class="g-pstyle1">Street</p></div>
+                            <div id="g-ai1-4" class="g-ai2html-settings g-aiAbs" style="top:37.3832%;left:38.3695%;width:6.1333%;"><p class="g-pstyle1">Other</p></div>
+                            <div id="g-ai1-5" class="g-ai2html-settings g-aiAbs" style="top:37.3832%;left:49.8903%;width:8%;"><p class="g-pstyle1">Avenue</p></div>
+                            <div id="g-ai1-6" class="g-ai2html-settings g-aiAbs" style="top:41.2065%;right:81.5939%;width:11.4667%;"><p class="g-pstyle2">Staten Island</p></div>
+                            <div id="g-ai1-7" class="g-ai2html-settings g-aiAbs" style="top:52.6763%;right:81.7198%;width:14.6667%;"><p class="g-pstyle2">Queens</p></div>
+                            <div id="g-ai1-8" class="g-ai2html-settings g-aiAbs" style="top:64.3585%;right:81.735%;width:17.3333%;"><p class="g-pstyle2">Manhattan</p></div>
+                            <div id="g-ai1-9" class="g-ai2html-settings g-aiAbs" style="top:75.8284%;right:81.735%;width:17.3333%;"><p class="g-pstyle2">Brooklyn</p></div>
+                            <div id="g-ai1-10" class="g-ai2html-settings g-aiAbs" style="top:87.5106%;right:81.735%;width:17.3333%;"><p class="g-pstyle2">Bronx</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scrolly-step">
+                <div class="scrolly-step-box">
+                    <p>Clearly, the grid has taken hold in Manhattan more strongly than the other boroughs, and the straightforward streets/avenues pairing has remained a staple of Manhattan's road network.</p>
+                </div>
+            </div>
+            <div class="scrolly-step scrolly-step-last">
+                <div class="scrolly-step-box">
+                    <p>Though the city has changed in ways the 1811 commissioners could have never imagined, their idea for an easily-navigable, straightforward Manhattan has prevailed.</p>
+                </div>
             </div>
         </div>
-        <!-- Artboard: mobile -->
-        <div id="g-manhattan_map-mobile" class="g-artboard" style="max-width: 375px;max-height: 471px"
-            data-aspect-ratio="0.797" data-min-width="0" data-max-width="699">
-            <div style="padding: 0 0 125.5467% 0;"></div>
-            <img id="g-manhattan_map-mobile-img" class="g-manhattan_map-mobile-img g-aiImg" alt=""
-                src="manhattan_map-mobile.png" />
-            <div id="g-ai1-1" class="g-ai2html-settings g-aiAbs" style="top:20.3908%;left:6.2848%;width:60.8%;">
-                <p class="g-pstyle0">The<span class="g-cstyle0"> </span>Ave/St Debate</p>
-            </div>
-            <div id="g-ai1-2" class="g-ai2html-settings g-aiAbs" style="top:27.4002%;left:6.3607%;width:69.0667%;">
-                <p>Manhattan, known for its (mostly) rigid </p>
-                <p>grid of horizontal <span class="g-cstyle1">streets</span> and vertical </p>
-                <p><span class="g-cstyle1">avenues </span>, is criss-crossed by more</p>
-                <p>than 400 miles of the two road types.</p>
-            </div>
-            <div id="g-ai1-3" class="g-ai2html-settings g-aiAbs" style="top:28.0374%;left:82.3153%;width:8.2667%;">
-                <p class="g-pstyle1">Street</p>
-            </div>
-            <div id="g-ai1-4" class="g-ai2html-settings g-aiAbs" style="top:29.7366%;left:82.2654%;width:8.2667%;">
-                <p class="g-pstyle1">Avenue</p>
-            </div>
-            <div id="g-ai1-5" class="g-ai2html-settings g-aiAbs" style="top:31.6483%;left:82.2654%;width:8.2667%;">
-                <p class="g-pstyle1">Other</p>
-            </div>
-        </div>
-    </div>
-    <div class="content">
-        <p>Manhattan's road grid is dominated by streets and avenus; they make up over 75% of all roads in the borough.
-            Streets alone stretch over 325 miles of Manhattan, striping it from Wall Street to its northern tip.</p>
-        <p>
-            Streets are also more common in Manhattan than any other borough and they make up over 60% of the island's
-            entire road network.
-        </p>
-    </div>
-    <div id="g-bar_chart-box" class="ai2html">
-        <!-- Artboard: full -->
-        <div id="g-bar_chart-full" class="g-artboard" style="width:700px; height:425px;" data-aspect-ratio="1.647"
-            data-min-width="700">
-            <div style=""></div>
-            <img id="g-bar_chart-full-img" class="g-bar_chart-full-img g-aiImg" alt="" src="bar_chart-full.png" />
-            <div id="g-ai0-1" class="g-ai2html-settings g-aiAbs" style="top:2.5882%;left:2.1429%;width:95.7143%;">
-                <p class="g-pstyle0">Manhattan&rsquo;s Street Domination</p>
-            </div>
-            <div id="g-ai0-2" class="g-ai2html-settings g-aiAbs" style="top:12%;left:1.8571%;width:96%;">
-                <p>The borough has the highest share of streets in its road network at more than 60%. That&rsquo;s more
-                    than 320 total miles of streets.</p>
-            </div>
-            <div id="g-ai0-3" class="g-ai2html-settings g-aiAbs" style="top:28.4706%;left:14.7003%;width:4.4286%;">
-                <p class="g-pstyle1">Street</p>
-            </div>
-            <div id="g-ai0-4" class="g-ai2html-settings g-aiAbs" style="top:28.4706%;left:23.4552%;width:4.1429%;">
-                <p class="g-pstyle1">Other</p>
-            </div>
-            <div id="g-ai0-5" class="g-ai2html-settings g-aiAbs" style="top:28.4706%;left:31.4214%;width:5.4286%;">
-                <p class="g-pstyle1">Avenue</p>
-            </div>
-            <div id="g-ai0-6" class="g-ai2html-settings g-aiAbs" style="top:33.6471%;right:89.6164%;width:6.1429%;">
-                <p class="g-pstyle2">Staten Island</p>
-            </div>
-            <div id="g-ai0-7" class="g-ai2html-settings g-aiAbs" style="top:46.3529%;right:89.6838%;width:7.8571%;">
-                <p class="g-pstyle2">Queens</p>
-            </div>
-            <div id="g-ai0-8" class="g-ai2html-settings g-aiAbs" style="top:59.2941%;right:89.692%;width:9.2857%;">
-                <p class="g-pstyle2">Manhattan</p>
-            </div>
-            <div id="g-ai0-9" class="g-ai2html-settings g-aiAbs" style="top:72%;right:89.692%;width:9.2857%;">
-                <p class="g-pstyle2">Brooklyn</p>
-            </div>
-            <div id="g-ai0-10" class="g-ai2html-settings g-aiAbs" style="top:84.9412%;right:89.692%;width:9.2857%;">
-                <p class="g-pstyle2">Bronx</p>
-            </div>
-        </div>
-        <!-- Artboard: mobile -->
-        <div id="g-bar_chart-mobile" class="g-artboard" style="max-width: 375px;max-height: 471px"
-            data-aspect-ratio="0.797" data-min-width="0" data-max-width="699">
-            <div style="padding: 0 0 125.5467% 0;"></div>
-            <img id="g-bar_chart-mobile-img" class="g-bar_chart-mobile-img g-aiImg" alt="" src="bar_chart-mobile.png" />
-            <div id="g-ai1-1" class="g-ai2html-settings g-aiAbs" style="top:1.2744%;left:2.4%;width:97.6%;">
-                <p class="g-pstyle0">Manhattan&rsquo;s Street</p>
-                <p class="g-pstyle0">Domination</p>
-            </div>
-            <div id="g-ai1-2" class="g-ai2html-settings g-aiAbs" style="top:21.4528%;left:2.7567%;width:97.3333%;">
-                <p>The borough has the highest share of streets in its road network at more than 60%. That&rsquo;s more
-                    than 320 total miles of streets.</p>
-            </div>
-            <div id="g-ai1-3" class="g-ai2html-settings g-aiAbs" style="top:37.3832%;left:25.7081%;width:6.4%;">
-                <p class="g-pstyle1">Street</p>
-            </div>
-            <div id="g-ai1-4" class="g-ai2html-settings g-aiAbs" style="top:37.3832%;left:38.3695%;width:6.1333%;">
-                <p class="g-pstyle1">Other</p>
-            </div>
-            <div id="g-ai1-5" class="g-ai2html-settings g-aiAbs" style="top:37.3832%;left:49.8903%;width:8%;">
-                <p class="g-pstyle1">Avenue</p>
-            </div>
-            <div id="g-ai1-6" class="g-ai2html-settings g-aiAbs" style="top:41.2065%;right:81.5939%;width:11.4667%;">
-                <p class="g-pstyle2">Staten Island</p>
-            </div>
-            <div id="g-ai1-7" class="g-ai2html-settings g-aiAbs" style="top:52.6763%;right:81.7198%;width:14.6667%;">
-                <p class="g-pstyle2">Queens</p>
-            </div>
-            <div id="g-ai1-8" class="g-ai2html-settings g-aiAbs" style="top:64.3585%;right:81.735%;width:17.3333%;">
-                <p class="g-pstyle2">Manhattan</p>
-            </div>
-            <div id="g-ai1-9" class="g-ai2html-settings g-aiAbs" style="top:75.8284%;right:81.735%;width:17.3333%;">
-                <p class="g-pstyle2">Brooklyn</p>
-            </div>
-            <div id="g-ai1-10" class="g-ai2html-settings g-aiAbs" style="top:87.5106%;right:81.735%;width:17.3333%;">
-                <p class="g-pstyle2">Bronx</p>
-            </div>
-        </div>
-    </div>
-    <div class="content" style="padding-top: 1em;">
-        <p>Clearly, the grid has taken hold in Manhattan more strongly than the other boroughs, and the straightforward
-            streets/avenues pairing has remained a staple of Manhattan's road network.</p>
-        <p>Though the city has changed in ways the 1811 commissioners could have never imagined, their idea for an
-            easily-navicable, straightforward Manhattan has prevailed.</p>
     </div>
 
     <!-- End ai2html - 2026-03-23 22:54 -->
@@ -635,6 +702,39 @@
     </div>
     </div>
     </div>
+
+    <script>
+        (function () {
+            var section = document.getElementById('scrolly-section');
+            var track = document.getElementById('parallax-track');
+            var wrapper = document.querySelector('.scrolly-img-wrapper');
+
+            function update() {
+                var rect = section.getBoundingClientRect();
+                var scrolled = -rect.top;
+
+                if (scrolled <= 0) {
+                    track.style.transform = 'translateY(0)';
+                    return;
+                }
+
+                // Visual height of the rotated image = the wrapper's CSS width (after -90° rotation)
+                var imgVisualHeight = wrapper.offsetWidth;
+                var vh = window.innerHeight;
+                // Total pixels we can pan through
+                var maxPan = Math.max(0, imgVisualHeight - vh);
+                // Total scrollable distance through the section
+                var maxScroll = section.offsetHeight - vh;
+
+                var progress = maxScroll > 0 ? Math.min(scrolled / maxScroll, 1) : 0;
+                track.style.transform = 'translateY(' + (-progress * maxPan) + 'px)';
+            }
+
+            window.addEventListener('scroll', update, { passive: true });
+            window.addEventListener('resize', update, { passive: true });
+            update();
+        })();
+    </script>
 
     <div class="footer">
         <div class="content">
